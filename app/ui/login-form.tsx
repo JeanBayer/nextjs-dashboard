@@ -1,18 +1,20 @@
 "use client";
 
-import { lusitana } from "@/app/ui/fonts";
+import { useActionState } from "react";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
 import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "@/app/ui/button";
-import { useActionState } from "react";
-import { authenticate } from "@/app/lib/actions";
-import Link from "next/link";
-import { signIn } from "next-auth/react";
 import { AiFillGithub } from "react-icons/ai";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
+
+import { authenticate } from "@/app/lib/actions";
+import { Button } from "@/app/ui/button";
+import { ThirdPartyButton } from "@/app/ui/button/third-party-button";
+import { lusitana } from "@/app/ui/fonts";
 
 export default function LoginForm() {
   const [errorMessage, formAction, isPending] = useActionState(
@@ -87,14 +89,8 @@ export default function LoginForm() {
             <p className="text-sm text-gray-500">or</p>
             <div className="h-[1px] bg-gray-200 flex-grow"></div>
           </div>
-          <Button
-            type="button"
-            onClick={() => signIn("github")}
-            className="bg-slate-900 w-full hover:bg-slate-800"
-          >
-            <AiFillGithub /> <span className="ml-4" />
-            Sign in with GitHub
-          </Button>
+
+          <ThirdPartyButton type="github" />
 
           <div
             className="flex h-8 items-end space-x-1"
