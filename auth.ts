@@ -6,6 +6,7 @@ import bcrypt from "bcrypt";
 import { authConfig } from "./auth.config";
 import type { User } from "@/app/lib/definitions";
 import { ValidateUser } from "@/app/lib/schema";
+import GitHub from "next-auth/providers/github";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -17,7 +18,7 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, signIn, signOut, handlers } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
@@ -37,5 +38,6 @@ export const { auth, signIn, signOut } = NextAuth({
         return null;
       },
     }),
+    GitHub,
   ],
 });
