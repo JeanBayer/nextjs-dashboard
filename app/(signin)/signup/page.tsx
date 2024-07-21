@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { createUser } from "@/app/lib/data";
 
 export const metadata: Metadata = {
-  title: "Signin",
+  title: "Sign Up",
 };
 
 export default function SignUpPage() {

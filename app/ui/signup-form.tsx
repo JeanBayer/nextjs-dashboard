@@ -17,6 +17,8 @@ export default function SignUpForm() {
   const initialState: State = { message: null, errors: {} };
   const [state, formAction, isPending] = useActionState(signup, initialState);
 
+  const errors = Object.values(state?.errors || {}).flat();
+
   return (
     <form action={formAction} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
@@ -57,7 +59,7 @@ export default function SignUpForm() {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
-                required
+                // required
               />
               <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -76,8 +78,8 @@ export default function SignUpForm() {
                 type="password"
                 name="password"
                 placeholder="Enter password"
-                required
-                minLength={6}
+                // required
+                // minLength={6}
               />
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -98,7 +100,7 @@ export default function SignUpForm() {
           aria-live="polite"
           aria-atomic="true"
         >
-          {state.errors?.email?.map((error) => (
+          {errors?.map((error: string) => (
             <>
               <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
               <p className="text-sm text-red-500">{error}</p>

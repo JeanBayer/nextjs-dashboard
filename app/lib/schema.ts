@@ -26,10 +26,12 @@ const UserSchema = z.object({
     .string({
       invalid_type_error: "Please enter a password.",
     })
-    .min(6),
-  name: z.string({
-    invalid_type_error: "Please enter your name.",
-  }),
+    .min(6, { message: "Password must be at least 6 characters long." }),
+  name: z
+    .string({
+      invalid_type_error: "Please enter your name.",
+    })
+    .min(3, { message: "Name must be at least 3 characters long." }),
 });
 
 export const CreateUser = UserSchema.omit({ id: true });

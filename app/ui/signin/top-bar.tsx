@@ -9,8 +9,8 @@ import { usePathname } from "next/navigation";
 const links = [
   { name: "login", href: "/login", icon: UserCircleIcon },
   {
-    name: "signin",
-    href: "/signin",
+    name: "signup",
+    href: "/signup",
     icon: CpuChipIcon,
   },
 ];

@@ -71,7 +71,7 @@ export default function LoginForm() {
         <Link
           className="flex h-10  items-center rounded-lg px-4 text-sm font-medium text-gray-900 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:text-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 mt-4 w-full"
           aria-disabled={isPending}
-          href="/signin"
+          href="/signup"
         >
           Don&apos;t have an account? Sign up here.
         </Link>
