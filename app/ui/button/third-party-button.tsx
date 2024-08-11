@@ -22,7 +22,7 @@ export function ThirdPartyButton({
     >
       <button.icon className={clsx(button.iconColor, "h-6 w-6")} />
       <span className="ml-4" />
-      Sign in with {button.name}
+      <span className={button.textColor}>Sign in with {button.name}</span>
     </Button>
   );
 }
@@ -33,6 +33,7 @@ const thirdPartyButtons = {
     name: "GitHub",
     icon: AiFillGithub,
     iconColor: "text-gray-100",
+    textColor: "text-gray-100",
     className: "bg-slate-900 w-full hover:bg-slate-800",
     onClick: () => signIn("github"),
   },
@@ -41,7 +42,8 @@ const thirdPartyButtons = {
     name: "Google",
     icon: AiFillGoogleCircle,
     iconColor: "text-red-500",
-    className: "bg-white w-full hover:bg-slate-50 text-gray-950",
+    textColor: "text-gray-900",
+    className: "bg-white w-full hover:bg-slate-50",
     onClick: () => signIn("google"),
   },
 };
