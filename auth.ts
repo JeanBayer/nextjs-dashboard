@@ -7,6 +7,7 @@ import { authConfig } from "./auth.config";
 import type { User } from "@/app/lib/definitions";
 import { ValidateUser } from "@/app/lib/schema";
 import GitHub from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -39,5 +40,9 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       },
     }),
     GitHub,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    })
   ],
 });

@@ -1,15 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
-import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import {
   AtSymbolIcon,
-  KeyIcon,
   ExclamationCircleIcon,
+  KeyIcon,
 } from "@heroicons/react/24/outline";
-import { AiFillGithub } from "react-icons/ai";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
+import { useActionState } from "react";
 
 import { authenticate } from "@/app/lib/actions";
 import { Button } from "@/app/ui/button";
@@ -90,7 +88,10 @@ export default function LoginForm() {
             <div className="h-[1px] bg-gray-200 flex-grow"></div>
           </div>
 
-          <ThirdPartyButton type="github" />
+          <div className="flex flex-col gap-4 items-center justify-center">
+            <ThirdPartyButton type="github" />
+            <ThirdPartyButton type="google" />
+          </div>
 
           <div
             className="flex h-8 items-end space-x-1"

@@ -1,17 +1,17 @@
 "use client";
 
+import { signup, State } from "@/app/lib/actions";
+import { Button } from "@/app/ui/button";
 import { lusitana } from "@/app/ui/fonts";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import {
   AtSymbolIcon,
-  KeyIcon,
   ExclamationCircleIcon,
+  KeyIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "@/app/ui/button";
-import { useActionState } from "react";
-import { signup, State } from "@/app/lib/actions";
 import Link from "next/link";
+import { Fragment, useActionState } from "react";
 
 export default function SignUpForm() {
   const initialState: State = { message: null, errors: {} };
@@ -101,10 +101,10 @@ export default function SignUpForm() {
           aria-atomic="true"
         >
           {errors?.map((error: string) => (
-            <>
+            <Fragment key={error}>
               <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
               <p className="text-sm text-red-500">{error}</p>
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
