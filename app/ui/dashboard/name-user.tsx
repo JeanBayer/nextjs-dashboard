@@ -1,20 +1,9 @@
 "use client";
 
-import { getSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import useUser from "@/app/hooks/use-user";
 
 export default function NameUser() {
-  const [name, setName] = useState("");
+  const user = useUser();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const session = await getSession();
-      if (!session) return null;
-      setName(session?.user?.name!);
-    };
-
-    fetchData();
-  }, []);
-
-  return <div className="text-white text-sm">Hi {name}</div>;
+  return <div className="text-white text-sm">Hi {user?.name}</div>;
 }
